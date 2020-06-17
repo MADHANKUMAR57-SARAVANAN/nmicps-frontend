@@ -1,0 +1,72 @@
+.logo{
+    position: relative;
+}
+.lable{
+    text-align: left;
+}
+.login-page{
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+overflow: auto;
+// background-image: url(login-register.jpg);
+text-align: center;
+color: #fff;
+padding: 2rem;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+height: 100%;
+width: 100%;
+padding: 2% 0;
+padding-left: 15px;
+padding-right: 15px;
+position: absolute;
+}
+
+.top{
+   padding-top: 20px;
+}
+// .version{
+//     font-size: 12px;
+//     font-weight: 300;
+//     font-family: 'gillsanslight59465bc4d96ac';
+// }
+.button:hover{
+   
+       background-color: #83d0c9;
+       color: white;
+}
+
+@media (max-width: 1024px) {
+    .login100-more
+      
+      {
+        background-size: contain;
+        margin-left: 0px;
+        top: -30px;
+      }
+    }
+  
+// .input:focus{
+//     border: 1px solid #0D1D35 !important;
+//     box-shadow:  0px 0px 4px #0D1D35 !important;
+//     padding-left:8px !important;
+   
+// }
+// .head {
+//     text-align: center;
+//     padding: 30px;
+// }
+
+// .head img {
+//     height: 200px;
+// }
+
+// .input{
+ 
+//     padding-left:8px !important;
+   
+// }
+

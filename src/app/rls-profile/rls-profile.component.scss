@@ -1,0 +1,28 @@
+.profile-tab-box{
+    background-color: #d3d3d3 !important;
+}
+
+.tab-all a.active {
+    background-color: none !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    border-radius: none !important;
+    font-size: 18px;
+}
+
+.nav-item tab-all{
+    color:#000;
+    font-size: 18px !important;
+}
+.tab-all a{
+    font-size: 18px !important
+}
+a:hover{
+    color:#83d0c9 !important;
+}
+.btn-info{
+    background-color: #333333;
+}
+.btn-info:hover{
+    background-color: #83d0c9 !important;
+}

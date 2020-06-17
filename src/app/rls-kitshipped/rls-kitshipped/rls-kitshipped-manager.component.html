@@ -1,0 +1,130 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+       
+        <!-- Exportable Table -->
+        <br>
+        <div class="row clearfix">
+                <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <br>
+                <div class="card">
+                        <br>
+                    <div class="header">
+                            <h2>
+                                    <strong>Kitshipped Management</strong>
+                                </h2>
+                        <ul class="header-dropdown m-r--5" *ngIf="schooloption.indexOf('c') != -1 && showaddbtn">
+                            <button (click)="addDevice()" class="color">Add</button>
+
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-field col s12">
+                                <select (change)="stateChange($event)" class="selectpicker1" data-live-search="true">
+                                    <option value="" disabled selected>Select States</option>
+                                    <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                        {{item.stateName}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-field col s12">
+                                <select NgModel id="district" name="district" (change)="districtChange($event)"
+                                    class="selectpicker2" data-live-search="true">
+                                    <option value="" disabled selected>Select Districts</option>
+                                    <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                        {{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-field col s12">
+                                <select NgModel id="school" name="school" (change)="schoolChange($event)"
+                                    class="selectpicker3" data-live-search="true">
+                                    <option value="" disabled selected>Select Schools</option>
+                                    <option *ngFor="let item of schoolNames" value="{{item.NameofSchool}}">
+                                        {{item.NameofSchool}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name of School</th>
+                                        <th>USCHCD</th>
+                                        <th>Cluster Name</th>
+                                        <th>Name of Blocks</th>
+                                        <th>Districts </th>
+                                        <th>Teachers</th>
+                                        <th>States</th>
+                                        <th>Cluster Code</th>
+                                        <th>UDISECode</th>
+                                        <th>Category</th>
+                                        <th>Management</th>
+                                        <th>Enrol_6_8</th>
+                                        <th>Enrol_9_10</th>
+                                        <th>Total_enrol</th>
+                                        <th>clrooms</th>
+                                        <th>RURURB</th>
+                                        <th>ELECTRIC_YN</th>
+                                        <th *ngIf="schooloption.indexOf('b') != -1">Action</th> -->
+                                        <th>States</th>
+                                        <th>Districts </th>
+                                        
+                                         <th>Kit Shipped Date</th>
+                                         <th>View Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of schoolData_DisPlay">
+                                        <!--                                         <td>{{alert._id }}</td>
+ -->
+                                        <!-- <td>{{alert.NameofSchool }}</td>
+                                        <td>{{alert.USCHCD }}</td>
+                                        <td>{{alert.ClusterName }}</td>
+                                        <td>{{alert.NameofBlocks }}</td>
+                                        <td>{{alert.Districts }}</td>
+                                        <td>{{alert.Teachers }}</td>
+                                        <td>{{alert.stateName }}</td>
+                                        <td>{{alert.ClusterCode }}</td>
+                                        <td>{{alert.U_DISECode }}</td>
+                                        <td>{{alert.Category }}</td>
+                                        <td>{{alert.Management }}</td>
+                                        <td>{{alert.Enrol_6_8 }}</td>
+                                        <td>{{alert.Enrol_9_10 }}</td>
+                                        <td>{{alert.Total_enrol }}</td>
+                                        <td>{{alert.clrooms }}</td>
+                                        <td>{{alert.RURURB }}</td>
+                                        <td>{{alert.ELECTRIC_YN }}</td> -->
+                                        <!-- (click)="addSongPlayList()" -->
+                                        <!-- <td *ngIf="schooloption.indexOf('b') != -1"><a
+                                                href="#/rls-school/rls-school-edit/{{alert._id}}">Edit</a></td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Exportable Table -->
+    </div>
+    <div class="card-footer">
+            Copyright © Haselfre Foundation 2019
+    </div>
+    <br>
+</section>

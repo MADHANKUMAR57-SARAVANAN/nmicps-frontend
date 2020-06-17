@@ -1,0 +1,266 @@
+<div *ngIf="showLoadingIndicatior" class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30">
+            <img class="loading-img-spin" src="assets/images/loading.png" width="20" height="20" alt="admin">
+        </div>
+        <p>Please wait...</p>
+    </div>
+</div>
+<div class="overlay"></div>
+<!-- #END# Overlay For Sidebars -->
+<!-- Search Bar -->
+<div id="main-component">
+    <nav class="navbar">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+
+                <a href="#" onClick="return false;" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
+
+                <a href="#" onClick="return false;" class="bars"></a>
+                <a class="navbar-brand" routerLink="dashboard/main">
+                    <img class="logo" src="assets/images/nidara.png" alt="" />
+                    <span class="logo-name">AFS-ICPS</span>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="pull-left">
+                    <li>
+                        <a href="#" onClick="return false;" class="sidemenu-collapse">
+                            <i class="material-icons">reorder</i>
+                        </a>
+                    </li>
+                </ul>
+                <label class="title">AFS-ICPS</label>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Full Screen Button -->
+                    <li class="fullscreen">
+                        <a href="javascript:;" class="fullscreen-btn">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </li>
+
+                    <li class="dropdown user_profile">
+                        <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                            role="button">
+                            <img src="assets/images/user.jpg" width="32" height="32" alt="User">
+                        </a>
+                        <ul class="dropdown-menu pullDown">
+                            <li class="body">
+                                <ul class="user_dw_menu">
+                                    <li routerLinkActive="active">
+                                        <a routerLink="extra-pages/profile" href="#" onClick="return false;">
+                                            <i class="material-icons">person</i>Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" routerLink="rls-feedback" onClick="return false;">
+                                            <i class="material-icons">feedback</i>Feedback
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="rls-help" href="#" onClick="return false;">
+                                            <i class="material-icons">help</i>Help
+                                        </a>
+                                    </li>
+                                    <li routerLinkActive="active">
+                                        <a routerLink="signin" href="#" (click)="logout()">
+                                            <i class="material-icons">power_settings_new</i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Tasks -->
+                    <li class="pull-right">
+                        <a href="#" onClick="return false;" class="js-right-sidebar" data-close="true">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="sidebar-user-panel">
+                        <div class="user-panel">
+                            <div class=" image">
+                               
+                            </div>
+                        </div>
+                      
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>ICPS Technologies</span>
+                        </a>
+
+                    </li>
+
+
+
+                    <li routerLinkActive="active">
+                        <a routerLink="rls-nc-game-table">
+                            <i class="fa fa-laptop" aria-hidden="true"></i>
+                            <span> Tablet Setup And Operation</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="rls-system-event">
+
+                            <i class="fa fa-gamepad" aria-hidden="true"></i>
+                            <span>Games Help</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="rls-school">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span>User Manual System</span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+            <!-- #Menu -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation">
+                    <a href="#skins" data-toggle="tab" class="active">SKINS</a>
+                </li>
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane in active in active stretchLeft" id="skins">
+                    <div class="demo-skin">
+
+                        <div class="rightSetting">
+                            <p>SIDEBAR COLORS CHANGE</p>
+                            <button type="button"
+                                class="btn btn-sidebar-light btn-border-radius p-l-20 p-r-20">Light</button>
+                            <button type="button"
+                                class="btn btn-sidebar-dark btn-default btn-border-radius p-l-20 p-r-20">Dark</button>
+                        </div>
+                        <div class="rightSetting">
+                            <p>THEME COLORS CHANGE</p>
+                            <button type="button"
+                                class="btn btn-theme-light btn-border-radius p-l-20 p-r-20">Light</button>
+                            <button type="button"
+                                class="btn btn-theme-dark btn-default btn-border-radius p-l-20 p-r-20">Dark</button>
+                        </div>
+                        <div class="rightSetting">
+                            <p>SKINS COLORS CHANGE</p>
+                            <ul class="demo-choose-skin choose-theme list-unstyled">
+                                <li data-theme="black" class="actived">
+                                    <div class="black-theme"></div>
+                                </li>
+                                <li data-theme="white">
+                                    <div class="white-theme white-theme-border"></div>
+                                </li>
+                                <li data-theme="purple">
+                                    <div class="purple-theme"></div>
+                                </li>
+                                <li data-theme="blue">
+                                    <div class="blue-theme"></div>
+                                </li>
+                                <li data-theme="cyan">
+                                    <div class="cyan-theme"></div>
+                                </li>
+                                <li data-theme="green">
+                                    <div class="green-theme"></div>
+                                </li>
+                                <li data-theme="orange">
+                                    <div class="orange-theme"></div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- <div role="tabpanel" class="tab-pane stretchRight" id="settings">
+                    <div class="demo-settings">
+                        <p>GENERAL SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Report Panel Usage</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span class="lever switch-col-green"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Email Redirect</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="lever switch-col-blue"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>SYSTEM SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Notifications</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span class="lever switch-col-purple"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Auto Updates</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span class="lever switch-col-cyan"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>ACCOUNT SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Offline</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        <span class="lever switch-col-red"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Location Permission</span>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="lever switch-col-lime"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+               W</div> -->
+            </div>
+        </aside>
+        <!-- #END# Right Sidebar -->
+    </div>
+</div>
+<router-outlet></router-outlet>

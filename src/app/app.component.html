@@ -1,0 +1,510 @@
+<style type="text/css">
+    .container-fluid
+    {
+        width: 93% !important;
+    }
+</style>
+<div *ngIf="showLoadingIndicatior" class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30">
+                <img class="loading-img-spin" src="assets/images/loading.png" width="20" height="20" alt="admin">
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <div>
+        <!-- <nav class="navbar"> -->
+        <div class="container-fluid">
+            <div *ngIf="webTokencheck">
+               <div class="row">
+                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <img class="logo" src="assets/images/Logo--haselfre.jpg" alt="" />
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+                   </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <h5 class="logouts"><a href="/#/rls-profile" style="color:#000; font-family: 'gillsans', helvetica neue, arial, sans-serif;">PROFILE</a></h5>
+                       </div>
+                   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <h5 (click)="logout()" class="logouts font-family: 'gillsans', helvetica neue, arial, sans-serif;">SIGN OUT</h5>
+                       </div>
+                       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <img class="logo1" src="assets/images/pages/dst-logo1.jpg" alt="" />
+                       </div>
+               </div>
+                   <br>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                            <!-- <a style="font-size: 20px; cursor: pointer;">Aspirational Districts</a> -->
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"  >
+                                <label class="version">NATIONAL MISSION ON INTERDISCIPLINARY CYBER-PHYSICAL SYSTEMS</label><br>
+                                <label class="version1">BUILDING AWARENESS IN SCHOOLS IN ASPIRATIONAL DISTRICTS</label>
+                        </div>
+                        <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+                            </div> -->
+                    </div>
+                </div>
+
+
+
+        <!-- <div class="collapse navbar-collapse" id="navbar-collapse"> -->
+        <!-- <ul class="pull-left">
+                        <li> -->
+        <!-- <a href="#" onClick="return false;" class="sidemenu-collapse">
+                                <i class="material-icons">reorder</i>
+                            </a> -->
+        <!-- </li>
+                    </ul> -->
+
+        <!-- <label class="version">NM-ICPS BUILDING AWARENESS IN SCHOOLS IN ASPIRATIONAL DISTRICTS</label> -->
+
+        <!-- <img class="logo" src="assets/images/Logo--haselfre.jpg" alt="" /> -->
+        <!-- <div class="m-t-30">
+                            <img class="loading-img-spin" src="assets/images/dst logo1.png" width="20" height="20" alt="admin">
+                        </div> -->
+
+        <!-- <ul class="nav navbar-nav navbar-right"> -->
+
+        <!-- <h5 (click)="logout()" class="logouts">Sign Out</h5> -->
+        <!-- <li class="dropdown user_profile">
+                            <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button">
+                                <i class="fa fa-cog" title="Setting" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu pullDown">
+                                <li class="body">
+                                    <ul class="user_dw_menu">
+                                        <li routerLinkActive="active">
+                                            <a routerLink="extra-pages/profile" href="#" onClick="return false;">
+                                                <i class="material-icons">person</i>Profile
+                                            </a>
+                                        </li>
+                                        <li>
+
+                                            <a href="#" routerLink="rls-feedback" onClick="return false;">
+
+                                                <i class="material-icons">feedback</i>Feedback
+                                            </a>
+                                        </li>
+                                       - <li>
+
+                                            <a href="#" routerLink="rls-help" onClick="return false;">
+
+                                                <i class="material-icons">feedback</i>Help
+                                            </a>
+                                        </li> -->
+        <!-- <li routerLinkActive="active">
+                                            <a routerLink="signin" href="#" (click)="logout()">
+                                                <i class="material-icons">power_settings_new</i>Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> -->
+        <!-- <li class="fullscreen">
+                                <a href="javascript:;" class="fullscreen-btn">
+                                    <i class="fas fa-expand" title="Full Screen"></i>
+                                </a>
+                            </li> -->
+
+        <!-- <img class="logo1" src="assets/images/pages/dst-logo1.jpg" alt="" /> -->
+        <!-- #END# Tasks -->
+        <!-- <li class="pull-right">
+                            <a href="#" onClick="return false;" class="js-right-sidebar" data-close="true">
+                                    <i class="fa fa-cog"  aria-hidden="true"></i>
+                                <button>CHANGE THEME</button>
+                            </a>
+                        </li> -->
+        <!-- </ul>
+                </div> -->
+        <!-- </div> -->
+        <!-- </nav> -->
+
+     <div >
+        <div id="main-component" *ngIf="webTokencheck">
+
+        <aside id="leftsidebar" class="sidebar">
+
+            <div class="menu" *ngIf="userTypeId!=3 && userTypeId!=6">
+                <ul class="list">
+                    <li class="sidebar-user-panel">
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#" routerLink="dashboard/main">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                            <span class="font">Aspirational districts</span>
+                        </a>
+                    </li>
+
+
+
+                      <!-- <li routerLinkActive="active">
+                        <a href="#" routerLink="dashboard/dash">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <span class="font">Dashboard</span>
+                        </a>
+                    </li> -->
+                    <!-- <li routerLinkActive="active">
+
+                        <a href="#" onClick="return false;" class="menu-toggle">
+                            <i class="fa fa-rocket" aria-hidden="true"></i>
+                            <span class="font">Robotic Analytics</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li routerLinkActive="active" *ngIf="useroption.indexOf('a') != -1">
+                                <a class="font" routerLink="rls-poweron"><i
+                                        class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Power On Metrics</a>
+                            </li>
+                            <li routerLinkActive="active" *ngIf="deviceoption.indexOf('a') != -1">
+                                <a class="font" routerLink="rls-participation-metrix"><i class="fas fa-tablet-alt"
+                                        aria-hidden="true"></i> &nbsp; Participant Metrics</a>
+                            </li>
+
+                            <li routerLinkActive="active" *ngIf="deviceassignoption.indexOf('a') != -1">
+                                <a class="font" routerLink="rls-voice-interaction/rls-unanswered-queries"><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;Unanswered Queries</a>
+                            </li>
+                            <li routerLinkActive="active" *ngIf="deviceassignoption.indexOf('a') != -1">
+                                <a class="font" routerLink="rls-usage-report"><i class="fa fa-hourglass-half" aria-hidden="true"></i> &nbsp;Usage Metrics</a>
+                            </li>
+                        </ul>
+                    </li> -->
+
+                     <!-- <li routerLinkActive="active">
+                                <a class="font" routerLink="rls-unanswered-questions"><i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;Unanswered Queries</a>
+                            </li> -->
+                    <!-- <li routerLinkActive="active">
+                        <a href="#/rls-robotics-chart"  >
+                            <i class="fa fa-cubes" aria-hidden="true"></i>
+                        <span class="font"> Robotics Analytics</span>
+                        </a>
+                    </li> -->
+                    <li routerLinkActive="active">
+                            <a href="#/rls-mapview"  >
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span class="font">Red Zone Districts</span>
+                            </a>
+                        </li>
+                    <li routerLinkActive="active">
+                        <a href="#/rls-robotics-statewise"  >
+                            <i class="fa fa-cubes" aria-hidden="true"></i>
+                        <span class="font"> Robotics Analytics </span>
+                        </a>
+                    </li>
+
+                            <li routerLinkActive="active">
+                                <a href="#/rls-program-details"  >
+                                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                                <span class="font">Program Details  (English)</span>
+                                </a>
+                            </li>
+
+                            <!-- <li routerLinkActive="active">
+                                <a href="#/rls-robotics-chart"  >
+                                    <i class="fa fa-tablet" aria-hidden="true"></i>
+                                <span class="font"> Robotics Analytics</span>
+                                </a>
+                            </li> -->
+
+                            <li routerLinkActive="active">
+                                <a href="#/rls-program-hindi-details"  >
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                                <span class="font">Program Details  (Hindi)</span>
+                                </a>
+                            </li>
+
+                            <li routerLinkActive="active">
+                                <a href="#/rls-team-coordinators"  >
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <span class="font">Team Coordinators</span>
+                                </a>
+                            </li>
+        
+
+
+
+                    <li routerLinkActive="active">
+                        <a href="#/rls-robotic-details"  >
+                            <i class="fas fa-robot" aria-hidden="true"></i>
+                            <span class="font">AI-enabled Robotic Specs</span>
+                        </a>
+                    </li>
+
+                      
+
+                    <li routerLinkActive="active">
+                        <a href="#/rls-media-kit"  >
+
+                            <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+                            <span class="font">Media Kit </span>
+                        </a>
+                    </li>
+
+                     <li routerLinkActive="active">
+                        <a href="#/rls-media-coverage"  >
+
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span class="font">Media Coverage </span>
+                        </a>
+                    </li>
+
+                    <!-- <li routerLinkActive="active">
+                        <a href="#"  >
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span class="font">Training status</span>
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a href="#"  >
+                            <i class="fa fa-street-view" aria-hidden="true"></i>
+                            <span class="font">Future shaandar</span>
+                        </a>
+                    </li> -->
+
+
+
+                    <!-- <li routerLinkActive="active" *ngIf="shippeddistrictoption.indexOf('a') != -1">
+                            <a class="font" routerLink="rls-commissioned-report/rls-shipment">
+                                 <i class="fa fa-camera" aria-hidden="true"></i>
+                                <span class="font">Kit Shipped</span>
+                                </a>
+                        </li>
+
+                        <li routerLinkActive="active">
+                            <a class="font" routerLink="rls-commissioned-report/rls-issued">
+                                 <i class="fa fa-camera" aria-hidden="true"></i>
+                                <span class="font">Teachers Trained</span>
+                                </a>
+                        </li>
+
+                        <li routerLinkActive="active">
+                                <a class="font" routerLink="rls-commissioned-report/rls-commissioned">
+                                     <i class="fa fa-camera" aria-hidden="true"></i>
+                                    <span class="font">Kit Handover</span>
+                                    </a>
+                            </li>
+
+                            <li routerLinkActive="active">
+                                    <a class="font" routerLink="rls-commissioned-report/rls-training-date">
+                                        <i class="fa fa-camera" aria-hidden="true"></i>
+                                        <span class="font">Children Trained</span>
+                                        </a>
+                                </li>  -->
+
+
+
+
+
+
+
+
+                     <!-- <li routerLinkActive="active" *ngIf="schooloption.indexOf('a') != -1">
+
+                        <a routerLink="rls-school">
+
+                            <span class="font">School Management</span>
+                        </a>
+                    </li> -->
+                    <!-- <li routerLinkActive="active" *ngIf="useroption.indexOf('a') != -1">
+                        <a  routerLink="rls-setting/rls-user-creation-table"><i
+                                class="fa fa-user-plus" aria-hidden="true"></i> <span class="font"> User Creation</span>
+                            </a>
+                    </li> -->
+                    <!-- <li routerLinkActive="active" *ngIf="deviceoption.indexOf('a') != -1">
+                        <a  routerLink="rls-setting/rls-device-manager"><i class="fas fa-tablet-alt"
+                                aria-hidden="true"></i> <span class="font"> Device Manager</span></a>
+                    </li> -->
+
+                    <!-- <li routerLinkActive="active" *ngIf="deviceassignoption.indexOf('a') != -1">
+                        <a  routerLink="rls-setting/rls-device-assign"><i
+                                class="far fa-check-circle " aria-hidden="true"></i> <span class="font">Device Assign</span> </a>
+                    </li> -->
+        
+
+                    <!-- <li routerLinkActive="active">
+
+                        <a routerLink="rls-mou">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="font">State MOU</span>
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active">
+
+                        <a routerLink="rls-districtmou">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="font">District MOU</span>
+                        </a>
+                    </li>   -->
+
+
+
+                    <!-- <li routerLinkActive="active">
+                        <a href="#" onClick="return false;" class="menu-toggle">
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+                            <span class="font">Data Upload</span>
+                        </a>
+                        <ul class="ml-menu">
+                               <li routerLinkActive="active">
+
+                                        <a routerLink="rls-mou">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <span class="font">State MOU</span>
+                                        </a>
+                                    </li>
+
+                                    <li routerLinkActive="active">
+
+                                        <a routerLink="rls-districtmou">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <span class="font">District MOU</span>
+                                        </a>
+                                    </li>
+                            <li routerLinkActive="active" *ngIf="useroption.indexOf('a') != -1">
+                                <a class="font" routerLink="rls-kitshipped"><i
+                                        class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Kit Shipped</a>
+                            </li>
+                            <li routerLinkActive="active"  >
+                                <a class="font" routerLink="rls-kithandler"><i class="fas fa-tablet-alt"
+                                        aria-hidden="true"></i> &nbsp; Kit Handover</a>
+                            </li>
+
+                            <li routerLinkActive="active"  >
+                                <a class="font" routerLink="rls-teacherstrain"><i class="fas fa-chalkboard-teacher"></i> &nbsp;Teachers Trained</a>
+                            </li>
+                            <li routerLinkActive="active"  >
+                                <a class="font" routerLink="rls-childrentrained"><i
+                                        class="far fa-check-circle" aria-hidden="true"></i> &nbsp;Childrens Trained</a>
+                            </li>
+                        </ul>
+                    </li> -->
+
+                   <!-- <li routerLinkActive="active">
+                        <a href="#" onClick="return false;" class="menu-toggle">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <span class="font">Settings</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li routerLinkActive="active" *ngIf="schooloption.indexOf('a') != -1">
+
+                                <a routerLink="rls-school">
+                                    <i class="fa fa-child" aria-hidden="true"></i>
+                                    <span class="font">School Management</span>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active" *ngIf="useroption.indexOf('a') != -1">
+                                <a  routerLink="rls-setting/rls-user-creation-table"><i
+                                        class="fa fa-user-plus" aria-hidden="true"></i> <span class="font"> User Creation</span>
+                                    </a>
+                            </li>
+                            <li routerLinkActive="active" *ngIf="deviceoption.indexOf('a') != -1">
+                                <a  routerLink="rls-setting/rls-device-manager"><i class="fas fa-tablet-alt"
+                                        aria-hidden="true"></i> <span class="font"> Device Manager</span></a>
+                            </li>
+
+                            <li routerLinkActive="active" *ngIf="deviceassignoption.indexOf('a') != -1">
+                                <a  routerLink="rls-setting/rls-device-assign"><i
+                                        class="far fa-check-circle " aria-hidden="true"></i> <span class="font">Device Assign</span> </a>
+                            </li>
+                            <li routerLinkActive="active" *ngIf="userTypeId == '1' || userTypeId == '2'">
+                                <a routerLink="rls-setting/rls-access-data">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <span class="font">Access control</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>  -->
+
+                    <!-- <li routerLinkActive="active" *ngIf="userTypeId == '1' || userTypeId == '2'">
+                        <a routerLink="rls-setting/rls-access-data">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="font">Access control</span>
+                        </a>
+                    </li> -->
+
+                <!--     <li routerLinkActive="active" >
+                        <a routerLink="rls-setting/rls-access-data">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="font">Profile</span>
+                        </a>
+                    </li> -->
+
+
+                </ul>
+            </div>
+
+            <div class="menu" *ngIf="userTypeId==3 || userTypeId==6">
+                <ul class="list">
+                    <li class="sidebar-user-panel">
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#" routerLink="dashboard/main">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                            <span class="font">Aspirational districts</span>
+                        </a>
+                    </li>
+                   
+                    <li routerLinkActive="active">
+                        <a href="#/rls-mapview"  >
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span class="font">Red Zone Districts</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#/rls-robotics-statewise"  >
+                            <i class="fa fa-cubes" aria-hidden="true"></i>
+                        <span class="font"> Robotics Analytics </span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#/rls-program-details"  >
+                            <i class="fa fa-tablet" aria-hidden="true"></i>
+                        <span class="font">Program Details  (English)</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a href="#/rls-program-hindi-details"  >
+                        <i class="fa fa-building" aria-hidden="true"></i>
+                        <span class="font">Program Details  (Hindi)</span>
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a href="#/rls-robotic-details"  >
+                            <i class="fas fa-robot" aria-hidden="true"></i>
+                            <span class="font">AI-enabled Robotic Specs</span>
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a href="#/rls-media-kit"  >
+
+                            <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+                            <span class="font">Media Kit </span>
+                        </a>
+                    </li>
+
+                     <li routerLinkActive="active">
+                        <a href="#/rls-media-coverage"  >
+
+                            <i class="fas fa-microphone-alt" aria-hidden="true"></i>
+                            <span class="font">Media Coverage </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+
+
+
+    </div>
+
+
+<router-outlet></router-outlet>

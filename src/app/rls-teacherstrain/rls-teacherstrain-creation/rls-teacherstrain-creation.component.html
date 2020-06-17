@@ -1,0 +1,81 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+       
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong class="font">Teachers trained</strong>
+                    </h2>
+
+                </div>
+                <div class="body">
+                    <form id="form_validation" method="POST" [formGroup]="fileupload"
+                        (ngSubmit)="OnDeviceformSubmit(fileupload.value)">
+                        <div class="row clearfix">
+                           
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>State List</label>
+                                <div class="input-field col s12">
+                                    <select (change)="stateChange($event)" formControlName="stateId">
+                                        <option value="" class="font" disabled>Select State</option>
+                                        <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                            {{item.stateName}}</option>
+                                    </select>
+                                        <input type="hidden" class="form-control" formControlName="stateName" required>
+                                  
+                                    <div *ngIf="stateId.invalid && stateId.touched">
+                                        <small class="text-danger" *ngIf="stateId.errors?.required">State is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>District List</label>
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" name="district" formControlName="Districts">
+                                        <option value="" class="font" disabled selected>Select District</option>
+                                        <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                            {{item.value}}</option>
+                                    </select>
+                                    <div *ngIf="Districts.invalid && Districts.touched">
+                                        <small class="text-danger" *ngIf="Districts.errors?.required">District is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>File</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="file" class="input100 font" 
+                                            formControlName="file" required (change)="fileChange($event)" multiple="">
+
+                                        <div *ngIf="file.invalid && file.touched">
+                                            <small class="text-danger" *ngIf="file.errors?.required" >Please Select files</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="submit btn-hover btn-border-radius color-1 button" type="submit">SUBMIT</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+            Copyright © Haselfre Foundation 2019
+    </div>
+    <br>
+</section>

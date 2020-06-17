@@ -1,0 +1,164 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1"> 
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>District MOU upload</strong>
+                    </h2>
+                </div>
+                <div class="body">
+                    <!-- #userCreation="ngForm" -->
+                   <form id="form_validation" method="POST" [formGroup]="fileupload"
+                        (ngSubmit)="OnDeviceformSubmit(fileupload.value)">
+                          <div class="row clearfix">
+                           
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>State List</label>
+                                <div class="input-field col s12">
+                                    <select (change)="stateChange($event)" formControlName="stateId">
+                                        <option value="" class="font" disabled>Select State</option>
+                                        <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                            {{item.stateName}}</option>
+                                    </select>
+                                        <input type="hidden" class="form-control" formControlName="stateName" required>
+                                  
+                                    <div *ngIf="stateId.invalid && stateId.touched">
+                                        <small class="text-danger" *ngIf="stateId.errors?.required">State is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label class="font">District List</label>
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" class="font" name="district"
+                                        formControlName="District">
+                                        <option value="" disabled class="font" selected>Select District</option>
+                                        <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                            {{item.value}}</option>
+                                    </select>
+                                    <div *ngIf="District.invalid && District.touched">
+                                        <small class="text-danger" *ngIf="District.errors?.required">District is required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Rank</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Rank" required >
+
+                                        <div *ngIf="Rank.invalid && Rank.touched">
+                                            <small class="text-danger" *ngIf="Rank.errors?.required" >Please enter the Rank</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>ExecutedBy</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="ExecutedBy" required >
+
+                                        <div *ngIf="ExecutedBy.invalid && ExecutedBy.touched">
+                                            <small class="text-danger" *ngIf="ExecutedBy.errors?.required" >Please enter the ExecutedBy</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>TeacherTrainingDate</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="date" class="input100 font" 
+                                            formControlName="TeacherTrainingDate" required >
+
+                                        <div *ngIf="TeacherTrainingDate.invalid && TeacherTrainingDate.touched">
+                                            <small class="text-danger" *ngIf="TeacherTrainingDate.errors?.required" >Please enter the TeacherTrainingDate</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  -->
+
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>ShipmentDate</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="date" class="input100 font" 
+                                            formControlName="ShipmentDate" required >
+
+                                        <div *ngIf="ShipmentDate.invalid && ShipmentDate.touched">
+                                            <small class="text-danger" *ngIf="ShipmentDate.errors?.required" >Please enter the ShipmentDate</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                             <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>ChildrenTrained</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="date" class="input100 font" 
+                                            formControlName="ChildrenTrained" required >
+
+                                        <div *ngIf="ChildrenTrained.invalid && ChildrenTrained.touched">
+                                            <small class="text-danger" *ngIf="ChildrenTrained.errors?.required" >Please enter the ChildrenTrained</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>KitHandoverDate</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="date" class="input100 font" 
+                                            formControlName="KitHandoverDate" required >
+
+                                        <div *ngIf="KitHandoverDate.invalid && KitHandoverDate.touched">
+                                            <small class="text-danger" *ngIf="KitHandoverDate.errors?.required" >Please enter the KitHandoverDate</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>File</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="file" class="input100 font" 
+                                            formControlName="file" required (change)="fileChange($event)" multiple="">
+
+                                        <div *ngIf="file.invalid && file.touched">
+                                            <small class="text-danger" *ngIf="file.errors?.required" >Please select the files</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- [attr.disabled]="!userCreation.valid ? true : true" -->
+                        <button class="submit btn-hover btn-border-radius color-1 button" type="submit">SUBMIT</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

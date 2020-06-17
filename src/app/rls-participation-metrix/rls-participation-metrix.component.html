@@ -1,0 +1,170 @@
+<style type="text/css">
+    .jqx-grid-pager {
+        left: 100px;
+        width: 900px !important;
+    }
+
+    .jqx-widget-header {
+        width: 900px !important;
+    }
+
+    .jqx-button {
+        display: none;
+    }
+    .filter-option-inner-inner
+    {
+        text-transform: none !important;
+    }
+</style>
+<style type="text/css">
+      select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid" style="margin-left: 18%;width:auto">
+       
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                            <h2>
+                                    <strong>Participation Metrics</strong>
+                                </h2>
+                    </div>
+                    <div class="body">
+                        <form [formGroup]="deviceAssign" (ngSubmit)="onSubmit(deviceAssign.value)">
+                                <div class="row clearfix">
+                                     <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                           <select (change)="stateChange($event)" class="selectpicker1" data-live-search="true" formControlName="state">
+                                        <option value="" disabled>Select States</option>
+                                        <option *ngFor="let item of statedata['data']; let i = index" value="{{i}}">{{item.stateName}}</option>
+                                    </select>
+                                    <input type="hidden" formControlName="stateName" value="">
+                
+                                     </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                             <select NgModel id="district" name="district" class="selectpicker2" data-live-search="true" (change)="districtChange($event)" formControlName="districtId">
+                                                <option value="" disabled selected>Select Districts</option>
+                                                <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">{{item.value}}</option>
+                                            </select>
+                
+                                     </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                            <select NgModel id="schoolName" class="selectpicker3" (change)="schoolChange($event)" data-live-search="true" name="schoolName" formControlName="schoolName">
+                                                <option value="" selected>Show all schools</option>
+                                                <option *ngFor="let item of schooldata;" value="{{item.schoolName}}">{{item.schoolName}}</option>
+                                           </select>
+                
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                  
+                                  </div>
+
+                                    <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                    <label style="font-size: 17px" class="active">From date</label>
+                                    <input type="date" formControlName="startDate" value="" placeholder="startDate">
+                
+                                     </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                        <label style="font-size: 17px" class="active">To date</label>
+                                            <input type="date" formControlName="endDate" value="" placeholder="startDate">
+                
+                                     </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                             <button class="submit btn-hover btn-border-radius color-1 button" type="submit" style="margin:0">GO</button>
+                
+                                        </div>
+                                    </div>
+                                   
+                                  
+                                  </div>
+                            </form>
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>VlogId</th> -->
+                                        <th>School name</th>
+                                        <th>Number of questions asked</th>
+                                        <th>Number of questions answered</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of video_datas">
+                                        <td>{{alert.schoolName }}</td>
+                                        
+                                        <td>{{alert.audiocount+alert.unanscount }}</td>
+                                        <td>{{alert.audiocount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Assign to the district user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       
+                        <div class="row clearfix">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group form-float">
+                                    <div class="form-line input-field">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- </form> -->
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-info waves-effect">Assign</button> -->
+                    <button type="button"
+                        class="btn btn-danger waves-effect"
+                        data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- #END# Exportable Table -->
+    </div>
+    </div>
+    
+</section>

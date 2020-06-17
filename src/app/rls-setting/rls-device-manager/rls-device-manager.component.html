@@ -1,0 +1,97 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+        <br>
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+                <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <br>
+                <div class="card">
+                        <br>
+                    <div class="header">
+
+                        <ul class="header-dropdown m-r--5" *ngIf="deviceoption.indexOf('c') != -1">
+                            <button (click)="addDevice()" class="color">Add</button>
+
+                        </ul>
+                    </div>
+                    <br>
+                    <form [formGroup]="filterOption">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-field col s12">
+                                    <select (change)="deviceChange($event)" formControlName="state"
+                                        class="selectpicker1" data-live-search="true">
+                                        <option value="" disabled>Select Device ID</option>
+                                        <option *ngFor="let item of passdata['data']" value="{{item.deviceIMEI}}">
+                                            {{item.deviceIMEI}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" formControlName="district"
+                                        (change)="simChange($event)" class="selectpicker2" data-live-search="true">
+                                        <option value="" disabled selected>Select Sim Number</option>
+                                        <option *ngFor="let item of simdata" value="{{item.simNumber}}">
+                                            {{item.simNumber}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" formControlName="school"
+                                        (change)="statusChange($event)" class="selectpicker3" data-live-search="true">
+                                        <option value="" disabled selected>Select Status</option>
+                                        <option value="1">Assigned</option>
+                                        <option value="0">Unassigned</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <th>Device ID (IMEI)</th>
+                                        <th>Model Name</th>
+                                        <th>Device S.No</th>
+                                        <th>SIM Number</th>
+                                        <th>Device Status</th>
+                                        <th>Assign Status</th>
+                                        <th *ngIf="deviceoption.indexOf('b') != -1">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of deviceData_DisPlay">
+                                        <td>{{alert.deviceIMEI }}</td>
+                                        <td>{{alert.dmodelName}}</td>
+                                        <td>{{alert.deviceSNO}}</td>
+                                        <td>{{alert.simNumber }}</td>
+                                        <td>{{(alert.isActive==1)?"Active":"Inactive"}}</td>
+                                        <td>{{(alert.assignStatus==0)?"Unassigned":"Assigned"}}</td>
+                                        <!-- (click)="addSongPlayList()" -->
+                                        <td *ngIf="deviceoption.indexOf('b') != -1"><a
+                                                href="#/rls-setting/rls-device-edit/{{alert._id}}">Edit</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Exportable Table -->
+    </div>
+</section>

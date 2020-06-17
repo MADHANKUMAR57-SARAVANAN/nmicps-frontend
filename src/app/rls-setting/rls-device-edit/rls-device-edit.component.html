@@ -1,0 +1,214 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>Device Creation</strong>
+                    </h2>
+
+                </div>
+                <div class="body">
+                    <form [formGroup]="deviceCreation" (ngSubmit)="OnDeviceformSubmit(deviceCreation.value)">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Model Number</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text"  class="input100 font" formControlName="modelNumber" required>
+                                        <input type="hidden" class="form-control" formControlName="deviceId" required>
+                                        <!-- <label class="form-label">Model Number</label> -->
+                                        <div *ngIf="modelNumber.invalid && modelNumber.touched">
+                                            <small class="text-danger" *ngIf="modelNumber.errors?.required">modelNumber
+                                                is required</small>
+                                            <small class="text-danger" *ngIf="modelNumber.errors?.minlength">modelNumber
+                                                must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Model Name</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="modelName" required>
+                                        <!-- <label class="form-label">Model Name</label> -->
+                                        <div *ngIf="modelName.invalid && modelName.touched">
+                                            <small class="text-danger" *ngIf="modelName.errors?.required">modelName is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="modelName.errors?.minlength">modelName
+                                                must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Device Number ( IMEI )</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="deviceIMEI" required>
+                                        <!-- <label class="form-label">Device Number ( IMEI )</label> -->
+                                        <div *ngIf="deviceIMEI.invalid && deviceIMEI.touched">
+                                            <small class="text-danger" *ngIf="deviceIMEI.errors?.required">deviceIMEI is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="deviceIMEI.errors?.minlength">deviceIMEI
+                                                must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Device S.NO</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="deviceSNO" required>
+                                        <!-- <label class="form-label">Device S.NO</label> -->
+                                        <div *ngIf="deviceSNO.invalid && deviceSNO.touched">
+                                            <small class="text-danger" *ngIf="deviceSNO.errors?.required">device S.NO is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="deviceNumber.errors?.minlength">device
+                                                S.NO must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>SIM Number</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="simNumber" required>
+                                        <!-- <label class="form-label">SIM Number</label> -->
+                                        <div *ngIf="simNumber.invalid && simNumber.touched">
+                                            <small class="text-danger" *ngIf="simNumber.errors?.required">simNumber is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="simNumber.errors?.minlength">simNumber
+                                                must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>SIM provider name</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="simProviderName"
+                                            required>
+                                        <!-- <label class="form-label">SIM provider name</label> -->
+                                        <div *ngIf="simProviderName.invalid && simProviderName.touched">
+                                            <small class="text-danger"
+                                                *ngIf="simProviderName.errors?.required">simProviderName is
+                                                required</small>
+                                            <small class="text-danger"
+                                                *ngIf="simProviderName.errors?.minlength">simProviderName must be at
+                                                least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>SIM IMEI Number</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="simIMEI" required>
+                                        <!-- <label class="form-label">SIM IMEI Number</label> -->
+                                        <div *ngIf="simIMEI.invalid && simIMEI.touched">
+                                            <small class="text-danger" *ngIf="simIMEI.errors?.required">simIMEI is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="simIMEI.errors?.minlength">simIMEI must be
+                                                at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Manufacture Name</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="manufactureName"
+                                            required>
+                                        <!-- <label class="form-label">Manufacture Name</label> -->
+                                        <div *ngIf="manufactureName.invalid && manufactureName.touched">
+                                            <small class="text-danger"
+                                                *ngIf="manufactureName.errors?.required">manufactureName is
+                                                required</small>
+                                            <small class="text-danger"
+                                                *ngIf="manufactureName.errors?.minlength">manufactureName must be at
+                                                least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Manufacture Date</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" formControlName="manufactureDate"
+                                            required>
+                                        <!-- <label class="form-label">Manufacture Date</label> -->
+                                        <div *ngIf="manufactureDate.invalid && manufactureDate.touched">
+                                            <small class="text-danger"
+                                                *ngIf="manufactureDate.errors?.required">manufactureDate is
+                                                required</small>
+                                            <small class="text-danger"
+                                                *ngIf="manufactureDate.errors?.minlength">manufactureDate must be at
+                                                least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>Device Status</label>
+                                <div class="input-field col s12">
+                                    <select class="form-select" formControlName='status'>
+                                        <option value="" disabled>Select Device Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">In-Active</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="status.invalid && status.touched">
+                                    <small class="text-danger" *ngIf="status.errors?.required">Status is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>Device working Status</label>
+                                <div class="input-field col s12">
+                                    <select class="form-select" formControlName='workingStatus'>
+                                        <option value="" disabled>Device working Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">In-Active</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="workingStatus.invalid && workingStatus.touched">
+                                    <small class="text-danger" *ngIf="workingStatus.errors?.required">workingStatus is
+                                        required</small>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <button class="submit btn-hover btn-border-radius color-1" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

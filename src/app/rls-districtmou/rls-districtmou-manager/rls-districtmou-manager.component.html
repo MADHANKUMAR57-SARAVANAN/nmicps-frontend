@@ -1,0 +1,56 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+        <br>
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+                <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <br>
+                <div class="card">
+                        <br>
+                    <div class="header">
+
+                        <ul class="header-dropdown m-r--5" >
+                            <button (click)="addDevice()" class="color">Add</button>
+
+                        </ul>
+                    </div>
+                    <br>
+                  
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <th>StateName</th>
+                                        <th>District</th>
+                                        <th>MOU Doc</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of state_DisPlay">
+                                        <td>{{alert.State }}</td>
+                                        <td>{{alert.District }}</td>
+                                          <td> <a target="_blank" *ngIf="alert.Districtmou" href="http://afs-icps-image.haselfrefoundation.org.s3-ap-south-1.amazonaws.com/Districtmou/{{ alert.Districtmou }}">MOU document</a></td>
+                                       
+                                        <td ><a
+                                                href="#/rls-districtmou/rls-districtmou-edit/{{alert._id}}">Edit</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Exportable Table -->
+    </div>
+</section>

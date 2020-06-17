@@ -1,0 +1,256 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>User Creation</strong>
+                    </h2>
+                </div>
+                <div class="body">
+                    <!-- #userCreation="ngForm" -->
+                    <form [formGroup]="userCreation" (ngSubmit)="OnUserformSubmit(userCreation.value)">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">User Name</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="userName">
+                                            <span class="focus-input100"></span>
+                                       
+                                        <div *ngIf="userName.invalid && userName.touched">
+                                            <small class="text-danger" *ngIf="userName.errors?.required">Username is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="userName.errors?.minlength">Username must
+                                                be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Password</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="password" class="input100 font"
+                                            formControlName="password">
+                                            <span class="focus-input100"></span>
+                                       
+                                        <div *ngIf="password.invalid && password.touched">
+                                            <small class="text-danger" *ngIf="password.errors?.required">Password is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="password.errors?.minlength">Password must
+                                                be at least 8 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Confirm Password</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="password" class="input100 font" 
+                                            formControlName="confirmPassword">
+                                        <!-- <label class="form-label">Confirm Passwords</label> -->
+                                        <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                                            <small class="text-danger" *ngIf="confirmPassword.errors?.required">Confirm
+                                                password is required</small>
+                                            <small class="text-danger" *ngIf="confirmPassword.errors?.minlength">Confirm
+                                                password must be at least 8 characters</small>
+                                            <small class="text-danger"
+                                                *ngIf="confirmPassword.errors?.mustMatch">Passwords must match</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Email-Id</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="email" class="input100 font" 
+                                            formControlName="email" value="">
+                                        <!-- <label class="form-label">Email-Id</label> -->
+                                    </div>
+                                    <div *ngIf="email.invalid && email.touched">
+                                        <small class="text-danger" *ngIf="email.errors?.required">Email is
+                                            required</small>
+                                        <small class="text-danger" *ngIf="email.errors?.email">Enter valid
+                                            email-id</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Mobile Number</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font"
+                                            name="mobileNumber"
+                                            formControlName="mobileNumber">
+                                        <!-- <label class="form-label">Mobile Number</label> -->
+                                    </div>
+                                    <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
+                                        <small class="text-danger" *ngIf="mobileNumber.errors?.required">Mobile number
+                                            is required</small>
+                                        <small class="text-danger" *ngIf="mobileNumber.errors?.minlength">Mobile number
+                                            must be at least 10 characters</small>
+                                        <small class="text-danger" *ngIf="mobileNumber.errors?.pattern">Number only
+                                            allowed</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Address1</label>
+                                    <div class="wrap-input100 validate-input">
+
+                                        <input type="text" class="input100 font"
+                                            name="address1" formControlName="address1">
+                                        <!-- <label class="form-label">Address 1</label> -->
+                                    </div>
+                                    <div *ngIf="address1.invalid && address1.touched">
+                                        <small class="text-danger" *ngIf="address1.errors?.required">Address is
+                                            required</small>
+                                        <small class="text-danger" *ngIf="address1.errors?.minlength">Address must be at
+                                            least 3 characters</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Address2</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            name="address2" formControlName="address2">
+                                        <!-- <label class="form-label">Address 2</label> -->
+                                    </div>
+                                    <div *ngIf="address2.invalid && address2.touched">
+                                        <small class="text-danger" *ngIf="address2.errors?.required">Address is
+                                            required</small>
+                                        <small class="text-danger" *ngIf="address2.errors?.minlength">Address must be at
+                                            least 3 characters</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label class="font">Country</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            name="country" value="India" formControlName="country" readonly="">
+                                        <!-- <label class="form-label">Country</label> -->
+                                    </div>
+                                    <div *ngIf="country.invalid && country.touched">
+                                        <small class="text-danger" *ngIf="country.errors?.required">Country is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label class="font">State List</label>
+                                <div class="input-field col s12">
+                                    <select (change)="stateChange($event)" class="font" formControlName="state">
+                                        <option value="" class="font" disabled>Select State</option>
+                                        <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                            {{item.stateName}}</option>
+                                    </select>
+                                    <input type="hidden" class="form-control" formControlName="stateName" value="">
+                                    <div *ngIf="state.invalid && state.touched">
+                                        <small class="text-danger" *ngIf="state.errors?.required">State is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label class="font">District List</label>
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" class="font" name="district"
+                                        formControlName="district">
+                                        <option value="" disabled class="font" selected>Select District</option>
+                                        <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                            {{item.value}}</option>
+                                    </select>
+                                    <div *ngIf="district.invalid && district.touched">
+                                        <small class="text-danger" *ngIf="district.errors?.required">District is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Zipcode</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            name="zipcode" formControlName="zipcode">
+                                        <!-- <label class="form-label">Zipcode</label> -->
+                                    </div>
+                                    <div *ngIf="zipcode.invalid && zipcode.touched">
+                                        <small class="text-danger" *ngIf="zipcode.errors?.required">Zipcode is
+                                            required</small>
+                                        <small class="text-danger" *ngIf="zipcode.errors?.pattern">Number only
+                                            allowed</small>
+                                        <small class="text-danger" *ngIf="zipcode.errors?.minlength">Zipcode must be at
+                                            least 3 characters</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label class="font">User Status</label>
+                                <div class="input-field col s12">
+                                    <select class="form-select font" formControlName='status'>
+                                        <option value="" disabled>Select Users Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">In-Active</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="status.invalid && status.touched">
+                                    <small class="text-danger" *ngIf="status.errors?.required">Status is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label class="font">User Type</label>
+                                <div class="input-field col s12">
+                                    <select class="form-select font" formControlName='userType'>
+                                        <option value="" disabled>Select Users Type</option>
+                                        <option *ngFor="let item of userTypes;" value="{{item.userTypeId}}">
+                                            {{item.userType}}</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="status.invalid && status.touched">
+                                    <small class="text-danger" *ngIf="status.errors?.required">Status is
+                                        required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- [attr.disabled]="!userCreation.valid ? true : true" -->
+                        <button class="submit btn-hover btn-border-radius color-1 button" type="submit">SUBMIT</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

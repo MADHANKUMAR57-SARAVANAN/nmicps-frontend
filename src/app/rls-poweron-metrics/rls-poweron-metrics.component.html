@@ -1,0 +1,210 @@
+<style type="text/css">
+    .jqx-grid-pager {
+        left: 100px;
+        width: 900px !important;
+    }
+
+    .jqx-widget-header {
+        width: 900px !important;
+    }
+
+    .jqx-button {
+        display: none;
+    }
+
+    label .input-field {
+        font-size: 17px !important;
+    }
+
+    .filter-option-inner-inner {
+        text-transform: none !important;
+    }
+</style>
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content" style="margin-left: 20%">
+    <div class="container-fluid">
+
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                        <h2>
+                            <strong>Power On Metrics</strong>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form [formGroup]="deviceAssign" (ngSubmit)="onSubmit(deviceAssign.value)">
+
+                            <div class="row clearfix">
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <select (change)="stateChange($event)" class="selectpicker1"
+                                            data-live-search="true" formControlName="state">
+                                            <option value="" disabled>Select States</option>
+                                            <option *ngFor="let item of statedata['data']; let i = index" value="{{i}}">
+                                                {{item.stateName}}</option>
+                                        </select>
+                                        <input type="hidden" formControlName="stateName" value="">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <select NgModel id="district" name="district" class="selectpicker2"
+                                            data-live-search="true" (change)="districtChange($event)"
+                                            formControlName="districtId">
+                                            <option value="" disabled selected>Select Districts</option>
+                                            <option *ngFor="let item of curdistrictsval | keyvalue"
+                                                value="{{item.value}}">{{item.value}}</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <select NgModel id="schoolName" class="selectpicker3"
+                                            (change)="schoolChange($event)" data-live-search="true" name="schoolName"
+                                            formControlName="schoolName">
+                                            <option value="" selected>Show all schools</option>
+                                            <option *ngFor="let item of schooldata;" value="{{item.schoolName}}">
+                                                {{item.schoolName}}</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <label style="font-size: 17px" class="active">From date</label>
+                                        <input type="date" formControlName="startDate" value="" placeholder="startDate">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <label style="font-size: 17px" class="active">To date</label>
+                                        <input type="date" formControlName="endDate" value="" placeholder="startDate">
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="input-field col s12">
+                                        <button class="submit btn-hover btn-border-radius color-1 button" type="submit"
+                                            style="margin:0">GO</button>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table id="tableExport"
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+
+                                        <!-- <th>VlogId</th> -->
+                                        <th>School name</th>
+                                        <!-- <th>Device Id</th>
+                                        <th>State</th>
+                                        <th>District</th> -->
+                                        <th>Total Hrs</th>
+                                        <th>Total times powered on</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let alert of video_datas">
+                                        <!-- <td>{{alert.vlogId }}</td> -->
+                                        <td>{{alert.NameofSchool }}</td>
+                                        <!--  <td>{{alert.deviceIMEI}}</td>
+                                        <td>{{alert.stateName}}</td>
+                                        <td>{{alert.Districts}}</td> -->
+                                        <td>{{alert.hours}}</td>
+                                        <td>{{alert.oncount}}</td>
+                                        <td><button type="button"
+                                                (click)="particulardata(alert.deviceIMEI)">View</button></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Detail view</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row clearfix">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group form-float">
+                                    <div class="form-line input-field">
+                                        <table id="tableExport1"
+                                            class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>DeviceId</th>
+                                                    <th>Time</th>
+                                                    <th>Device_Off</th>
+                                                    <th>Device_On</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let alert of particulardata">
+                                                    <td>{{alert.Device_Id }}</td>
+                                                    <td>{{alert.Time}}</td>
+                                                    <td>{{alert.Device_Off?alert.Device_Off:'-'}}</td>
+                                                    <td>{{alert.Device_On?alert.Device_On:'-'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- </form> -->
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-info waves-effect">Assign</button> -->
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- #END# Exportable Table -->
+        </div>
+    </div>
+
+</section>

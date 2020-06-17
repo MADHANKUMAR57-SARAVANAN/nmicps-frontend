@@ -1,0 +1,136 @@
+<style type="text/css">
+    .jqx-grid-pager {
+        left: 100px;
+        width: 900px !important;
+    }
+
+    .jqx-widget-header {
+        width: 900px !important;
+    }
+
+    .jqx-button {
+        display: none;
+    }
+
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid" style="margin-left: 18%;width:auto">
+        
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                            <h2>
+                                    <strong>Unanswered Queries</strong>
+                                </h2>
+                    
+                    <div class="body">
+                          <form [formGroup]="deviceAssign" (ngSubmit)="onSubmit(deviceAssign.value)">
+                                <div class="row clearfix">
+                                     <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                           <select (change)="stateChange($event)" class="selectpicker1" data-live-search="true" formControlName="state">
+                                        <option value="" disabled>Select States</option>
+                                        <option *ngFor="let item of statedata['data']; let i = index" value="{{i}}">{{item.stateName}}</option>
+                                    </select>
+                                    <input type="hidden" formControlName="stateName" value="">
+                
+                                     </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                             <select NgModel id="district" name="district" class="selectpicker2" data-live-search="true" (change)="districtChange($event)" formControlName="districtId">
+                                                <option value="" disabled selected>Select Districts</option>
+                                                <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">{{item.value}}</option>
+                                            </select>
+                
+                                     </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                            <select NgModel id="schoolName" class="selectpicker3" (change)="schoolChange($event)" data-live-search="true" name="schoolName" formControlName="schoolName">
+                                                <option value="" selected>Show all schools</option>
+                                                <option *ngFor="let item of schooldata;" value="{{item.schoolName}}">{{item.schoolName}}</option>
+                                           </select>
+                
+                                        </div>
+                                    </div>
+                                   
+                                   
+                                  
+                                  </div>
+
+                                    <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                    <label style="font-size: 17px" class="active">From date</label>
+                                    <input type="date" formControlName="startDate" value="" placeholder="startDate">
+                
+                                     </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                        <label style="font-size: 17px" class="active">To date</label>
+                                            <input type="date" formControlName="endDate" value="" placeholder="startDate">
+                
+                                     </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="input-field col s12">
+                                             <button class="submit btn-hover btn-border-radius color-1 button" type="submit" style="margin:0">GO</button>
+                
+                                        </div>
+                                    </div>
+                                   
+                                  
+                                  </div>
+                            </form>
+
+
+                        <div class="table-responsive">
+                            <table id="tableExport" datatable
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                        <th>School</th>
+                                        <th>Questions</th>
+                                        <th>Depth</th>
+                                        <th> Date and Time</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr *ngFor="let alert of unans_datas">
+                                        <td>{{alert.schoolName }}</td>
+                                        <td>{{alert._id }}</td>
+                                        <td>0</td>
+                                        <td>{{alert.CreatedDateTime}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                            <!-- <jqxDataTable
+            [source]="dataAdapter" [sortable]="true" [pageable]="true" [columns]="columns"
+                                          [filterable]="true" >
+        </jqxDataTable> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>

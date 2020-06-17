@@ -1,0 +1,347 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+       
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong class="font">School Data</strong>
+                    </h2>
+
+                </div>
+                <div class="body">
+                    <form id="form_validation" method="POST" [formGroup]="schoolData"
+                        (ngSubmit)="onSubmit(schoolData.value)">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>School Name</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="NameofSchool" required>
+
+                                        <div *ngIf="NameofSchool.invalid && NameofSchool.touched">
+                                            <small class="text-danger" *ngIf="NameofSchool.errors?.required">schoolName
+                                                is required</small>
+                                            <small class="text-danger" *ngIf="NameofSchool.errors?.minlength">schoolName
+                                                must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>USCHCD</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="USCHCD">
+
+                                        <div *ngIf="USCHCD.invalid && USCHCD.touched">
+                                            <small class="text-danger" *ngIf="USCHCD.errors?.required"> School code is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="USCHCD.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>ClusterName</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="ClusterName" required>
+
+                                        <div *ngIf="ClusterName.invalid && ClusterName.touched">
+                                            <small class="text-danger" *ngIf="ClusterName.errors?.required">ClusterName
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Name of Blocks</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="NameofBlocks" required>
+
+                                        <div *ngIf="NameofBlocks.invalid && NameofBlocks.touched">
+                                            <small class="text-danger" *ngIf="NameofBlocks.errors?.required">Name of
+                                                Blocksis required</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>State List</label>
+                                <div class="input-field col s12">
+                                    <select (change)="stateChange($event)" formControlName="stateId">
+                                        <option value="" class="font" disabled>Select State</option>
+                                        <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                            {{item.stateName}}</option>
+                                        <input type="hidden" class="form-control" formControlName="stateName" required>
+                                    </select>
+                                    <input type="hidden" class="form-control" formControlName="stateName" value="">
+                                    <div *ngIf="stateId.invalid && stateId.touched">
+                                        <small class="text-danger" *ngIf="stateId.errors?.required">State is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>District List</label>
+                                <div class="input-field col s12">
+                                    <select NgModel id="district" name="district" formControlName="Districts">
+                                        <option value="" class="font" disabled selected>Select District</option>
+                                        <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                            {{item.value}}</option>
+                                    </select>
+                                    <div *ngIf="Districts.invalid && Districts.touched">
+                                        <small class="text-danger" *ngIf="Districts.errors?.required">District is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Teachers</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Teachers" required>
+
+                                        <div *ngIf="Teachers.invalid && Teachers.touched">
+                                            <small class="text-danger" *ngIf="Teachers.errors?.required">Teachers is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="Teachers.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Cluster Code</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font"
+                                            formControlName="ClusterCode" required>
+
+                                        <div *ngIf="ClusterCode.invalid && ClusterCode.touched">
+                                            <small class="text-danger" *ngIf="ClusterCode.errors?.required">ClusterCode
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>U_DISE Code</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="U_DISECode" required>
+
+                                        <div *ngIf="U_DISECode.invalid && U_DISECode.touched">
+                                            <small class="text-danger" *ngIf="U_DISECode.errors?.required">U_DISECode is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="U_DISECode.errors?.minlength">Numbers
+                                                Only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Category</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Category" required>
+
+                                        <div *ngIf="Category.invalid && Category.touched">
+                                            <small class="text-danger" *ngIf="Category.errors?.required">Category is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="Category.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Management</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Management" required>
+
+                                        <div *ngIf="Management.invalid && Management.touched">
+                                            <small class="text-danger" *ngIf="Management.errors?.required">Management is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="Management.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Enrol_6_8</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Enrol_6_8" required>
+
+                                        <div *ngIf="Enrol_6_8.invalid && Enrol_6_8.touched">
+                                            <small class="text-danger" *ngIf="Enrol_6_8.errors?.required">Enrol_6_8 is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="Enrol_6_8.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Enrol_9_10</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Enrol_9_10" required>
+
+                                        <div *ngIf="Enrol_9_10.invalid && Enrol_9_10.touched">
+                                            <small class="text-danger" *ngIf="Enrol_9_10.errors?.required">Enrol_9_10 is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="Enrol_9_10.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Total_enrol</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Total_enrol" required>
+
+                                        <div *ngIf="Total_enrol.invalid && Total_enrol.touched">
+                                            <small class="text-danger" *ngIf="Total_enrol.errors?.required">Total_enrol
+                                                is required</small>
+                                            <small class="text-danger" *ngIf="Total_enrol.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>clrooms</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="clrooms" required>
+
+                                        <div *ngIf="clrooms.invalid && clrooms.touched">
+                                            <small class="text-danger" *ngIf="clrooms.errors?.required">clrooms is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="clrooms.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>RURURB</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="RURURB" required>
+
+                                        <div *ngIf="RURURB.invalid && RURURB.touched">
+                                            <small class="text-danger" *ngIf="RURURB.errors?.required">RURURB is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="RURURB.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>ELECTRIC_YN</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="ELECTRIC_YN" required>
+
+                                        <div *ngIf="ELECTRIC_YN.invalid && ELECTRIC_YN.touched">
+                                            <small class="text-danger" *ngIf="ELECTRIC_YN.errors?.required">ELECTRIC_YN
+                                                is required</small>
+                                            <small class="text-danger" *ngIf="ELECTRIC_YN.errors?.pattern">number
+                                                only</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Teacher Name1</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="teacherName1" required>
+
+                                        <div *ngIf="teacherName1.invalid && teacherName1.touched">
+                                            <small class="text-danger" *ngIf="teacherName1.errors?.required">Teacher Name1 is required</small>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Teacher Name2</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="teacherName2" required>
+
+                                        <div *ngIf="teacherName2.invalid && teacherName2.touched">
+                                            <small class="text-danger" *ngIf="teacherName2.errors?.required">Teacher Name1 is required</small>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="submit btn-hover btn-border-radius color-1 button" type="submit">SUBMIT</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+            Copyright © Haselfre Foundation 2019
+    </div>
+    <br>
+</section>

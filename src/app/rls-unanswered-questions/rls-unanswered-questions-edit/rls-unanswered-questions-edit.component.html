@@ -1,0 +1,103 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="content1">
+       
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong class="font">School Data</strong>
+                    </h2>
+
+                </div>
+                <div class="body">
+                    <form id="form_validation" method="POST" [formGroup]="queryData"
+                        (ngSubmit)="onSubmit(queryData.value)">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Question</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                            formControlName="Question" required>
+
+                                        <input type="hidden" class="form-control" formControlName="Id" required>
+                                        <!-- <label class="form-label font">Name of School</label> -->
+                                        <div *ngIf="Question.invalid && Question.touched">
+                                            <small class="text-danger" *ngIf="Question.errors?.required">Name of
+                                                School is required</small>
+                                            <small class="text-danger" *ngIf="Question.errors?.minlength">Name of
+                                                School must be at least 3 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Device Id</label>
+                                    <div class="wrap-input100 validate-input">
+                                        <input type="text" class="input100 font" 
+                                             formControlName="Device_Id">
+                                        <!-- <label class="form-label">Name of Blocks</label> -->
+                                        <div *ngIf="Device_Id.invalid && Device_Id.touched">
+                                            <small class="text-danger" *ngIf="Device_Id.errors?.required">Device Id is required</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <div class="form-group form-float">
+                                    <label>Answer</label>
+                                    <div class=" validate-input">
+                                        <textarea type="text" class=" font" 
+                                            formControlName="Answer"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>Weightage</label>
+                                <div class="wrap-input100 validate-input">
+                                    <select formControlName="weightage">
+                                        <option value="0" class="font" disabled>Select Weightage</option>
+                                        <option value="1" class="font">1</option>
+                                        <option value="2" class="font">2</option>
+                                        <option value="3" class="font">3</option>
+                                        <option value="4" class="font">4</option>
+                                        <option value="5" class="font">5</option>
+                                        <option value="6" class="font">6</option>
+                                        <option value="7" class="font">7</option>
+                                        <option value="8" class="font">8</option>
+                                        <option value="9" class="font">9</option>
+                                        <option value="10" class="font">10</option>
+                                    
+                                    </select>
+                                    <div *ngIf="weightage.invalid && weightage.touched">
+                                        <small class="text-danger" *ngIf="weightage.errors?.required">Weightage is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          
+
+                        </div>
+
+                        <button class="submit btn-hover btn-border-radius color-1" type="submit">SUBMIT</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+            Copyright © Haselfre Foundation 2019
+    </div>
+    <br>
+</section>

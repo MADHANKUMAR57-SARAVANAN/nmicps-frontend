@@ -1,0 +1,201 @@
+<style type="text/css">
+    .jqx-grid-pager {
+        left: 100px;
+        width: 900px !important;
+    }
+
+    .jqx-widget-header {
+        width: 900px !important;
+    }
+
+    .jqx-button {
+        display: none;
+    }
+
+    select {
+        display: block !important;
+    }
+</style>
+
+<section class="content">
+    <div class="container-fluid">
+       
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                            <h2>
+                                    <strong>Shipped District</strong>
+                                </h2>
+                    </div>
+                    <!-- <div class="row">
+                            <div class="col-lg-3 col-sm-6">
+                                    <div class="counter-box1 text-center white">
+                    
+                                        <div class="text font-17 m-b-5">Schools Identified</div>
+                    
+                    
+                                        <h2 class="m-b-10">
+                    
+                                          1
+                                        </h2>
+                    
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="counter-box1 text-center white">
+                    
+                                        <div class="text font-17 m-b-5">Shipped District</div>
+                    
+                    
+                                        <h3 class="m-b-10">1
+                    
+                                        </h3>
+                    
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="counter-box1 text-center white">
+                    
+                                        <div class="text font-17 m-b-5">Issued to School</div>
+                    
+                    
+                                        <h3 class="m-b-10">1
+                    
+                                        </h3>
+                    
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="counter-box1 text-center white">
+                    
+                                        <div class="text font-17 m-b-5">Commissioned in School</div>
+                    
+                    
+                                        <h3 class="m-b-10">
+                                            6
+                    
+                                        </h3>
+                                       
+                                    </div>
+                                </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-field col s12">
+                                <!-- <select class="selectpicker" data-live-search="true"> -->
+                                <select (change)="stateChange($event)" class="selectpicker1" data-live-search="true">
+                                    <option value="" disabled>Select States</option>
+                                    <option *ngFor="let item of passdata['data']; let i = index" value="{{i}}">
+                                        {{item.stateName}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-field col s12">
+                                <select NgModel id="district" name="district" class="selectpicker2"
+                                    data-live-search="true" (change)="districtChange($event)">
+                                    <option value="" disabled selected>Select Districts</option>
+                                    <option *ngFor="let item of curdistrictsval | keyvalue" value="{{item.value}}">
+                                        {{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        
+                            <div class="col-md-4">
+                                <div class="input-field col s12">
+                                    <select NgModel id="school" name="school" class="selectpicker3" data-live-search="true"
+                                        (change)="schoolChange($event)">
+                                        <option value="" disabled selected>Select Schools</option>
+                                        <option *ngFor="let item of schoolNames" value="{{item._id}}">{{item.NameofSchool}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table id="tableExport" datatable
+                                class="display table table-hover table-checkable order-column m-t-20 width-per-100">
+                                <thead>
+                                    <tr>
+                                            <th>School Name</th>
+                                        <th>States</th>
+                                        <th>Districts</th>
+                                        <th>Device (IMEI)</th>
+                                        <th>Kit Shipped Date</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ship of shipped['result']">
+                                            <td>{{ship.NameofSchool}}</td>
+                                        <td>{{ship.state}}</td>
+                                        <td>{{ship.district}}</td>
+                                        <td>{{ship.deviceIMEI}}</td>
+                                        <td>{{ship._id |date: 'dd/MM/yyyy'}}</td>
+
+                                    </tr>
+                                     
+                                   
+                                    
+                                </tbody>
+                            </table>
+
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Assign to the district user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <form [formGroup]="deviceAssign" (ngSubmit)="OnAssignformSubmit(deviceAssign.value)"> -->
+                        <div class="row clearfix">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group form-float">
+                                    <div class="form-line input-field">
+                                        <ng-multiselect-dropdown [placeholder]="'custom placeholder'"
+                                            [data]="dropdownList" [(ngModel)]="selectedItems"
+                                            [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)">
+                                        </ng-multiselect-dropdown>
+                                        <!-- <div *ngIf="userName.invalid && userName.touched">
+                                            <small class="text-danger" *ngIf="userName.errors?.required">Username is required</small>
+                                            <small class="text-danger" *ngIf="userName.errors?.minlength">Username must be at least 3 characters</small>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="submitFunction()"
+                            class="btn btn-info waves-effect">Assign</button>
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- #END# Exportable Table -->
+    </div>
+    
+</section>

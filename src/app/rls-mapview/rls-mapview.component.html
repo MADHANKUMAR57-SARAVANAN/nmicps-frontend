@@ -1,0 +1,118 @@
+<style type="text/css">
+    .jqx-grid-pager {
+        left: 100px;
+        width: 900px !important;
+    }
+
+    .jqx-widget-header {
+        width: 900px !important;
+    }
+
+    .jqx-button {
+        display: none;
+    }
+    .filter-option-inner-inner
+    {
+        text-transform: none !important;
+    }
+      div#overlay {
+    background: #FFF;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+}
+    .more-images{
+        color: #fff;
+        left: 0;
+        font-size: 14px;
+        width: auto;
+        background-color: transparent;
+        border-radius: 0;
+        text-align: left;
+        top: -34px;
+        text-shadow: none;
+        font-weight: normal;
+        position: absolute;
+        padding: 10px;
+        box-shadow: none;
+        cursor:pointer;
+    }
+
+</style>
+<style type="text/css">
+      select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid" style="margin-left: 18%;width:auto">
+       
+        <!-- Exportable Table -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                            <h2>
+ 
+                                    <strong>Red Zone Districts</strong>
+
+                                </h2>
+                    </div>
+                    
+                </div>
+                <agm-map [zoom]="5" [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="location.latitude" [longitude]="location.longitude" [title]="location.District+' / '+location.ShipmentDate" (markerClick)="clickedMarker(location.District)"  *ngFor="let location of Districtmouarr; let i=index" [iconUrl]="(redDistricts.indexOf(location.District) != -1)?'/assets/images/red.png':'/assets/images/Green1.png'"></agm-marker>
+                            
+                </agm-map>
+            </div>
+        </div>
+        <div style="position: relative;">
+        <div id="overlay">
+        </div>
+        <ng-image-slider [images]="imageObject" [imagePopup]=true #nav style=""></ng-image-slider>
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Assign to the district user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       
+                        <div class="row clearfix">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group form-float">
+                                    <div class="form-line input-field">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- </form> -->
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-info waves-effect">Assign</button> -->
+                    <button type="button"
+                        class="btn btn-danger waves-effect"
+                        data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- #END# Exportable Table -->
+    </div>
+    </div>
+    
+</section>

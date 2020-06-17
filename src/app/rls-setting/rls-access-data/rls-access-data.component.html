@@ -1,0 +1,372 @@
+<style type="text/css">
+    select {
+        display: block !important;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid">
+       
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>Access control</strong>
+                    </h2>
+                </div>
+                <div class="body">
+                    <!-- #userCreation="ngForm" -->
+                    <form [formGroup]="accessCreation" (ngSubmit)="OnUserformSubmit(accessCreation.value)">
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                <label>User Type</label>
+                                <div class="input-field col s12">
+                                    <select formControlName="userType" (change)="userTypeChange($event)">
+                                        <option value="" disabled selected>Select Users Type</option>
+                                        <option *ngFor="let item of userTypes['data']" value="{{item.userTypeId}}">
+                                            {{item.userType}}</option>
+                                    </select>
+                                    <div *ngIf="userType.invalid && userType.touched">
+                                        <small class="text-danger" *ngIf="userType.errors?.required">User type is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    User Management
+                                </div>
+                            </div>
+
+                           
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="userview" [(ngModel)]="userview1" type="checkbox"
+                                                value="a"> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="useredit" [(ngModel)]="useredit1" type="checkbox"
+                                                value="b"> Edit
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input" [(ngModel)]="useradd1"
+                                                formControlName="useradd" type="checkbox" value="c"> Add
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    School Management
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="schoolview" [(ngModel)]="schoolview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="schooledit" [(ngModel)]="schooledit1" type="checkbox"
+                                                value=""> Edit
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="schooladd" [(ngModel)]="schooladd1" type="checkbox"
+                                                value=""> Add
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="schoolassign" [(ngModel)]="schoolassign1"
+                                                type="checkbox" value=""> Assign
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Device Management
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input" type="checkbox"
+                                                value="" formControlName="deviceview" [(ngModel)]="deviceview1"> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input" type="checkbox"
+                                                value="" formControlName="deviceedit" [(ngModel)]="deviceedit1"> Edit
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input" type="checkbox"
+                                                value="" formControlName="deviceadd" [(ngModel)]="deviceadd1"> Add
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input" type="checkbox"
+                                                value="" formControlName="deviceassign" [(ngModel)]="deviceassign1">
+                                            Assign
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Schools identified
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="schoolidentifiedview" [(ngModel)]="schoolidentifiedview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Shipped District
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="shippeddistrictview" [(ngModel)]="shippeddistrictview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Issued School
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="issuedschoolview" [(ngModel)]="issuedschoolview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Commissioned School
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="commissionedschoolview" [(ngModel)]="commissionedschoolview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Device Assign
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="deviceassignview" [(ngModel)]="deviceassignview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div _ngcontent-wej-c1="" class="row clearfix">
+                            <div _ngcontent-wej-c1="" class="col-sm-2 col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group">
+                                    Voice record
+                                </div>
+                            </div>
+                            <div _ngcontent-wej-c1="" class="col-md-2">
+                                <div _ngcontent-wej-c1="" class="form-group form-check m-l-10">
+                                    <div _ngcontent-wej-c1="" class="form-line">
+                                        <label _ngcontent-iyy-c1="" class="form-check-label">
+                                            <input _ngcontent-iyy-c1="" class="form-check-input"
+                                                formControlName="voicerecordview" [(ngModel)]="voicerecordview1" type="checkbox"
+                                                value=""> View
+                                            <span _ngcontent-iyy-c1="" class="form-check-sign">
+                                                <span _ngcontent-iyy-c1="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <button class="submit btn-hover btn-border-radius color-1" type="submit">SUBMIT</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
+</section>
